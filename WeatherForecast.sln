@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Client.Unit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Deployment", "1. Deployment", "{D8EBC4F4-451E-496A-A73A-CBF014B82AFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Deployment", "WeatherForecast.Deployment\WeatherForecast.Deployment.csproj", "{BF980F20-7999-43AD-9F24-EEF1B5D8FFBC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,10 +47,6 @@ Global
 		{10CFBA89-9240-49A8-9D15-7B3B22A85FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10CFBA89-9240-49A8-9D15-7B3B22A85FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10CFBA89-9240-49A8-9D15-7B3B22A85FAA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF980F20-7999-43AD-9F24-EEF1B5D8FFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF980F20-7999-43AD-9F24-EEF1B5D8FFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF980F20-7999-43AD-9F24-EEF1B5D8FFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF980F20-7999-43AD-9F24-EEF1B5D8FFBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,7 +57,6 @@ Global
 		{8F608742-6D23-4AEA-A620-B5740ED016D7} = {66D9B43A-E41C-40C3-9F2C-313CAE680E55}
 		{DE50D7EB-C9FE-465F-99FC-A122B8DCF1E5} = {FD535C8F-5607-47B3-85F3-2F0EE5A9BCFC}
 		{10CFBA89-9240-49A8-9D15-7B3B22A85FAA} = {66D9B43A-E41C-40C3-9F2C-313CAE680E55}
-		{BF980F20-7999-43AD-9F24-EEF1B5D8FFBC} = {D8EBC4F4-451E-496A-A73A-CBF014B82AFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09B275AA-4AAE-4642-8AB3-50FDA2ACB3FA}
