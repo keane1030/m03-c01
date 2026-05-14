@@ -53,5 +53,5 @@ stages:
           ConnectionType: 'AzureRM'
           azureSubscription: 'Visual Studio Professional with MSDN (4a671263-c67b-4057-a573-3d2a1113b12e)'
           appType: 'webAppLinux'
-          WebAppName: 'app-service-deploy'
+          WebAppName: 'app-service-deploy-bmk'
           packageForLinux: '$(Pipeline.Workspace)/Weatherforecast Api/WeatherForecast.Api.zip'
