@@ -41,3 +41,17 @@ stages:
           command: test
           projects: '**/*.UnitTest.csproj'
           arguments: '--configuration $(Configuration)'
+  - stage: cd
+    displayName: Continuous Deployment
+    jobs:
+    - job: deploy_app_service
+      steps:
+      - download: current
+        artifact: Weatherforecast Api
+      - task: AzureRmWebAppDeployment@4
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'DeployAppService'
+          appType: 'webAppLinux'
+          WebAppName: 'app-service-deploy'
+          packageForLinux: '$(Pipeline.Workspace)/Weatherforecast Api/WeatherForecast.Api.zip'
