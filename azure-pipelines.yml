@@ -64,12 +64,12 @@ stages:
       - task: AzureCLI@2
         displayName: 'Deploy Azure Resources'
         inputs:
-          ConnectionType: 'AzureRM'
-          azureSubscription: '$(mysubscription)'
-          scriptType: bash
-          scriptLocation: inlineScript
-           inlineScript: |
-            echo test
+            ConnectionType: 'AzureRM'
+            azureSubscription: '$(mysubscription)'
+            scriptType: bash
+            scriptLocation: inlineScript
+            inlineScript: |
+                echo test
             # az appservice plan create \
             #     --name $appServicePlanName \
             #     --resource-group $resourceGroupName \
