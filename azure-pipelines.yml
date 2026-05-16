@@ -63,6 +63,7 @@ stages:
       - task: AzureCLI@2
         displayName: "Deploy Azure Resources"
         inputs:
+        ConnectionType: 'AzureRM'
         azureSubscription: '$(mysubscription)'
         scriptType: bash
         scriptLocation: inlineScript
