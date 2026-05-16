@@ -107,7 +107,7 @@ stages:
                 --partition-key-path "/id" \
                 --throughput 400
   - stage: cd
-    dependsOn: create-resources
+    dependsOn: [create_resources]
     displayName: Continuous Deployment
     jobs:
     - job: deploy_app_service
