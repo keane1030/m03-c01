@@ -68,12 +68,13 @@ stages:
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
-            az appservice plan create \
-                --name $appServicePlanName \
-                --resource-group $resourceGroupName \
-                --location $location \
-                --is-linux \
-                --sku B1
+            echo test
+            # az appservice plan create \
+            #     --name $appServicePlanName \
+            #     --resource-group $resourceGroupName \
+            #     --location $location \
+            #     --is-linux \
+            #     --sku B1
         
   #           echo "Creating Linux Web App..."
   #           az webapp create \
