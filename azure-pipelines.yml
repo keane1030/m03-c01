@@ -69,22 +69,20 @@ stages:
             scriptType: bash
             scriptLocation: inlineScript
             inlineScript: |
-                echo ...
-                echo $(resourceGroupName)
-                echo ...
-                # az appservice plan create \
-                #   --name my_linux_plan \
-                #   --resource-group MyRG \
-                #   --location switzerlandnorth \
-                #   --is-linux \
-                #   --sku B1
+                echo "Creating App Service Plan..."
+                az appservice plan create \
+                  --name $(appServicePlanName) \
+                  --resource-group $(resourceGroupName) \
+                  --location $(location) \
+                  --is-linux \
+                  --sku B1
         
-                # echo "Creating Linux Web App..."
-                # az webapp create \
-                #   --resource-group MyRG \
-                #   --plan my_linux_plan \
-                #   --name my_linux_webapp_bmk123 \
-                #   --runtime "DOTNETCORE:8.0"
+                echo "Creating Linux Web App..."
+                az webapp create \
+                  --resource-group $(resourceGroupName) \
+                  --plan $(appServicePlanName) \
+                  --name $(webAppName) \
+                  --runtime "DOTNETCORE:8.0"
 
   #           echo "Creating Cosmos DB account..."
   #           az cosmosdb create \
