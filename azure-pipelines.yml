@@ -7,13 +7,13 @@ variables:
   mysubscription: MSDN
   
   # App Service
-  appServicePlanName: my_linux_plan
-  webAppName: my_linux_webapp_bmk123
+  appServicePlanName: my-linux-plan
+  webAppName: my-linux-webapp-bmk123
 
   # Cosmos DB
-  cosmosAccountName: mycosmos_bmk123
-  cosmosDbName: mycosmosdb_bmk123
-  cosmosContainerName: mycontainer_bmk123
+  cosmosAccountName: my-cosmos-bmk123
+  cosmosDbName: my-cosmosdb-bmk123
+  cosmosContainerName: my-container-bmk123
 
 stages:
   # - stage: ci
@@ -69,20 +69,20 @@ stages:
             scriptType: bash
             scriptLocation: inlineScript
             inlineScript: |
-                echo "Creating App Service Plan..."
-                az appservice plan create \
-                  --name my_linux_plan \
-                  --resource-group MyRG \
-                  --location switzerlandnorth \
-                  --is-linux \
-                  --sku B1
+                echo $resourceGroupName
+                # az appservice plan create \
+                #   --name my_linux_plan \
+                #   --resource-group MyRG \
+                #   --location switzerlandnorth \
+                #   --is-linux \
+                #   --sku B1
         
-                echo "Creating Linux Web App..."
-                az webapp create \
-                  --resource-group MyRG \
-                  --plan my_linux_plan \
-                  --name my_linux_webapp_bmk123 \
-                  --runtime "DOTNETCORE:8.0"
+                # echo "Creating Linux Web App..."
+                # az webapp create \
+                #   --resource-group MyRG \
+                #   --plan my_linux_plan \
+                #   --name my_linux_webapp_bmk123 \
+                #   --runtime "DOTNETCORE:8.0"
 
   #           echo "Creating Cosmos DB account..."
   #           az cosmosdb create \
