@@ -69,7 +69,9 @@ stages:
             scriptType: bash
             scriptLocation: inlineScript
             inlineScript: |
+                echo ...
                 echo $resourceGroupName
+                echo ...
                 # az appservice plan create \
                 #   --name my_linux_plan \
                 #   --resource-group MyRG \
