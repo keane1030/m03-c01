@@ -56,12 +56,12 @@ stages:
           projects: '**/*.UnitTest.csproj'
           arguments: '--configuration $(Configuration)'
   - stage: create-resources
-    displayName: 'Create Resources'
+    displayName: Create Resources
     jobs:
     - job: create_webapp_and_cosmosdb
       steps:
       - task: AzureCLI@2
-        displayName: "Deploy Azure Resources"
+        displayName: 'Deploy Azure Resources'
         inputs:
         ConnectionType: 'AzureRM'
         azureSubscription: '$(mysubscription)'
