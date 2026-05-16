@@ -71,18 +71,18 @@ stages:
             inlineScript: |
                 echo "Creating App Service Plan..."
                 az appservice plan create \
-                    --name ($appServicePlanName) \
-                    --resource-group ($resourceGroupName) \
-                    --location ($location) \
-                    --is-linux \
-                    --sku B1
+                  --name $appServicePlanName \
+                  --resource-group $resourceGroupName \
+                  --location $location \
+                  --is-linux \
+                  --sku B1
         
                 echo "Creating Linux Web App..."
                 az webapp create \
-                    --resource-group ($resourceGroupName) \
-                    --plan ($appServicePlanName) \
-                    --name ($webAppName) \
-                    --runtime "DOTNETCORE:8.0"
+                  --resource-group $resourceGroupName \
+                  --plan $appServicePlanName \
+                  --name $webAppName \
+                  --runtime "DOTNETCORE:8.0"
 
   #           echo "Creating Cosmos DB account..."
   #           az cosmosdb create \
