@@ -55,25 +55,25 @@ stages:
           command: test
           projects: '**/*.UnitTest.csproj'
           arguments: '--configuration $(Configuration)'
-  # - stage: create-resources
-  #   displayName: 'Create Resources'
-  #   jobs:
-  #   - job: create_webapp_and_cosmosdb
-  #     steps:
-  #     - task: AzureCLI@2
-  #       displayName: "Deploy Azure Resources"
-  #       inputs:
-  #       azureSubscription: '$(mysubscription)'
-  #       scriptType: bash
-  #       scriptLocation: inlineScript
-  #       inlineScript: |
-  #           echo "Creating App Service Plan (Linux)..."
-  #           az appservice plan create \
-  #               --name $appServicePlanName \
-  #               --resource-group $resourceGroupName \
-  #               --location $location \
-  #               --is-linux \
-  #               --sku B1
+  - stage: create-resources
+    displayName: 'Create Resources'
+    jobs:
+    - job: create_webapp_and_cosmosdb
+      steps:
+      - task: AzureCLI@2
+        displayName: "Deploy Azure Resources"
+        inputs:
+        azureSubscription: '$(mysubscription)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+            echo "Creating App Service Plan (Linux)..."
+            az appservice plan create \
+                --name $appServicePlanName \
+                --resource-group $resourceGroupName \
+                --location $location \
+                --is-linux \
+                --sku B1
         
   #           echo "Creating Linux Web App..."
   #           az webapp create \
