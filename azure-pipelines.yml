@@ -7,13 +7,13 @@ variables:
   mysubscription: MSDN
   
   # App Service
-  appServicePlanName: my-linux-plan
-  webAppName: my-linux-webapp-bmk123
+  appServicePlanName: my_linux_plan
+  webAppName: my_linux_webapp_bmk123
 
   # Cosmos DB
-  cosmosAccountName: mycosmos-bmk123
-  cosmosDbName: mycosmosdb-bmk123
-  cosmosContainerName: mycontainer-bmk123
+  cosmosAccountName: mycosmos_bmk123
+  cosmosDbName: mycosmosdb_bmk123
+  cosmosContainerName: mycontainer_bmk123
 
 stages:
   - stage: ci
@@ -55,7 +55,7 @@ stages:
           command: test
           projects: '**/*.UnitTest.csproj'
           arguments: '--configuration $(Configuration)'
-  - stage: create-resources
+  - stage: create_resources
     displayName: Create Resources
     jobs:
     - job: create_webapp_and_cosmosdb
