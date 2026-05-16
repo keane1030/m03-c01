@@ -68,7 +68,6 @@ stages:
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
-            echo "Creating App Service Plan (Linux)..."
             az appservice plan create \
                 --name $appServicePlanName \
                 --resource-group $resourceGroupName \
