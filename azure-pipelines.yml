@@ -59,15 +59,16 @@ stages:
     displayName: Create Resources
     jobs:
     - job: create_webapp_and_cosmosdb
+      displayName: 'Create Web App and Cosmos DB'
       steps:
       - task: AzureCLI@2
         displayName: 'Deploy Azure Resources'
         inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: '$(mysubscription)'
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
+          ConnectionType: 'AzureRM'
+          azureSubscription: '$(mysubscription)'
+          scriptType: bash
+          scriptLocation: inlineScript
+           inlineScript: |
             echo test
             # az appservice plan create \
             #     --name $appServicePlanName \
