@@ -137,7 +137,7 @@ stages:
 
       # Checkout the second repo
       - checkout: SecondRepo
-        path: $(Build.SourcesDirectory)/SecondRepo
+        path: $(Build.SourcesDirectory)/workingdir/SecondRepo
       - task: UseDotNet@2
         displayName: 'Use .NET Core sdk 8.x'
         inputs:
@@ -145,5 +145,5 @@ stages:
       - task: DotNetCoreCLI@2
         displayName: 'dotnet build'
         inputs:
-          projects: '$(Build.SourcesDirectory)/SecondRepo/**/*.csproj'
+          projects: '$(Build.SourcesDirectory)/workingdir/SecondRepo/**/*.csproj'
           arguments: '--configuration $(Configuration)'
