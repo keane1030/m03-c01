@@ -151,14 +151,19 @@ stages:
     jobs:
     - job:
       steps:
-        - task: Bash@3
-          displayName: List contents of secondary repo
-          inputs:
-            targetType: inline
-            script: |
-              echo "Listing contents of $(Build.SourcesDirectory)"
-              ls -R $(Build.SourcesDirectory)
-              echo "path with directory"
-              pwd
-              echo "listing contents"
-              ls -R
+      - checkout: self
+
+      # Checkout the second repo
+      - checkout: SecondRepo
+        path: SecondRepo
+      - task: Bash@3
+        displayName: List contents of secondary repo
+        inputs:
+          targetType: inline
+          script: |
+            echo "Listing contents of $(Build.SourcesDirectory)"
+            ls -R $(Build.SourcesDirectory)
+            echo "***************path with directory******************"
+            pwd
+            echo "listing contents"
+            ls -R
