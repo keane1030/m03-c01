@@ -15,6 +15,12 @@ variables:
   cosmosDbName: my-cosmosdb-bmk123
   cosmosContainerName: my-container-bmk123
 
+resources:
+  repositories:
+    - repository: secondaryRepo
+      type: git
+      name: ci-cd-test/SecondRepo
+
 stages:
   - stage: ci
     displayName: Continuous Integration
@@ -121,3 +127,14 @@ stages:
           appType: 'webAppLinux'
           WebAppName: '$(webAppName)'
           packageForLinux: '$(Pipeline.Workspace)/Weatherforecast Api/WeatherForecast.Api.zip'
+
+  - stage: second_repo
+    displayName: Build second repo
+    jobs:
+    - job: 
+      steps:
+      - checkout: self
+
+      # Checkout the second repo
+      - checkout: secondaryRepo
+        path: secondary-repo
