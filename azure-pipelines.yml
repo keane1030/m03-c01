@@ -147,3 +147,18 @@ stages:
         inputs:
           projects: '$(Build.SourcesDirectory)/**/*.csproj'
           arguments: '--configuration $(Configuration)'
+  - stage: directories
+    jobs:
+    - job:
+      steps:
+        - task: Bash@3
+          displayName: List contents of secondary repo
+          inputs:
+            targetType: inline
+            script: |
+              echo "Listing contents of $(Build.SourcesDirectory)"
+              ls -R $(Build.SourcesDirectory)
+              echo "path with directory"
+              pwd
+              echo "listing contents"
+              ls -R
