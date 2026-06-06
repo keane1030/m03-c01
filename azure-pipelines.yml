@@ -17,7 +17,7 @@ variables:
 
 resources:
   repositories:
-    - repository: secondaryRepo
+    - repository: SecondRepo
       type: git
       name: ci-cd-test/SecondRepo
 
@@ -136,8 +136,8 @@ stages:
       - checkout: self
 
       # Checkout the second repo
-      - checkout: secondaryRepo
-        path: secondary-repo
+      - checkout: SecondRepo
+        path: SecondRepo
       - task: UseDotNet@2
         displayName: 'Use .NET Core sdk 8.x'
         inputs:
@@ -145,5 +145,5 @@ stages:
       - task: DotNetCoreCLI@2
         displayName: 'dotnet build'
         inputs:
-          projects: '$(Build.SourcesDirectory)/secondary-repo/**/*.csproj'
+          projects: '$(Build.SourcesDirectory)/SecondRepo/**/*.csproj'
           arguments: '--configuration $(Configuration)'
