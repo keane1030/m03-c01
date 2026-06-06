@@ -145,5 +145,5 @@ stages:
       - task: DotNetCoreCLI@2
         displayName: 'dotnet build'
         inputs:
-          projects: 'secondary-repo/**/*.csproj'
+          projects: '$(Build.SourcesDirectory)/secondary-repo/**/*.csproj'
           arguments: '--configuration $(Configuration)'
