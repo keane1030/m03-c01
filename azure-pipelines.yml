@@ -61,3 +61,70 @@ stages:
           command: test
           projects: '**/*.UnitTest.csproj'
           arguments: '--configuration $(Configuration)'
+  - stage: create_resources
+    displayName: Create Resources
+    jobs:
+    - job: create_webapp_and_cosmosdb
+      displayName: 'Create Web App and Cosmos DB'
+      steps:
+      - task: AzureCLI@2
+        displayName: 'Deploy Azure Resources'
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: '$(mysubscription)'
+          scriptType: bash
+          scriptLocation: inlineScript
+          inlineScript: |
+            echo "Creating App Service Plan..."
+            az appservice plan create \
+                --name $(appServicePlanName) \
+                --resource-group $(resourceGroupName) \
+                --location $(location) \
+                --is-linux \
+                --sku B1
+        
+            echo "Creating Linux Web App..."
+            az webapp create \
+                --resource-group $(resourceGroupName) \
+                --plan $(appServicePlanName) \
+                --name $(webAppName) \
+                --runtime "DOTNETCORE:8.0"
+
+            echo "Creating Cosmos DB account..."
+            az cosmosdb create \
+                --name $(cosmosAccountName) \
+                --resource-group $(resourceGroupName) \
+                --locations regionName=$(location) failoverPriority=0 \
+                --kind GlobalDocumentDB \
+                --default-consistency-level Session
+
+            echo "Creating Cosmos SQL database..."
+            az cosmosdb sql database create \
+                --account-name $(cosmosAccountName) \
+                --resource-group $(resourceGroupName) \
+                --name $(cosmosDbName)
+
+            echo "Creating Cosmos container..."
+            az cosmosdb sql container create \
+                --account-name $(cosmosAccountName) \
+                --resource-group $(resourceGroupName) \
+                --database-name $(cosmosDbName) \
+                --name $(cosmosContainerName) \
+                --partition-key-path "/id" \
+                --throughput 400
+  - stage: cd
+    dependsOn: [create_resources]
+    displayName: Continuous Deployment
+    jobs:
+    - job: deploy_app_service
+      steps:
+      - download: current
+        artifact: Weatherforecast Api
+      - task: AzureRmWebAppDeployment@4
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: '$(mysubscription)'
+          appType: 'webAppLinux'
+          WebAppName: '$(webAppName)'
+          packageForLinux: '$(Pipeline.Workspace)/Weatherforecast Api/WeatherForecast.Api.zip'
+
